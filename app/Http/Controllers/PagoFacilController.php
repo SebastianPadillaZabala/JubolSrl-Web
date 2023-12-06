@@ -35,8 +35,8 @@ class PagoFacilController extends Controller
             $lcNroPago             = "grupo14sa-" . rand(100000, 999999);
             $lnMontoClienteEmpresa = $pedido->monto_total;
             $lcCorreo              = $usuario->correo;
-            $lcUrlCallBack         = "https://tecno-web-254210f85ec2.herokuapp.com/pago_facil/callback/" . $pedido->id;
-            $lcUrlReturn           = "https://tecno-web-254210f85ec2.herokuapp.com/pago_facil/callback/" . $pedido->id;
+            $lcUrlCallBack         = "https://tecno-web14-e5add45ded4b.herokuapp.com/pago_facil/callback/" . $pedido->id;
+            $lcUrlReturn           = "https://tecno-web14-e5add45ded4b.herokuapp.com/pago_facil/callback/" . $pedido->id;
             $laPedidoDetalle       = Json_encode($taPedidoDetalle);
             $lcUrl                 = "";
 
