@@ -27,9 +27,9 @@
 
                     <li class="dropdown"><a href="#" data-bs-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <span
-                                class="text-dark">{{ Auth()->user()->name }}</span></a>
+                                class="text-dark">{{ auth()->user()->nombre }}</span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
-                            <div class="dropdown-title">Bienvenido {{ Auth()->user()->name }}</div>
+                            <div class="dropdown-title">Bienvenido {{ auth()->user()->nombre }}</div>
                             <a href="{{ route('profile.show') }}" class="dropdown-item has-icon"> <i
                                     class="far fa-user"></i> Perfil</a>
                             <div class="dropdown-divider"></div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,11 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::post('/IniciarSesion',[UsuarioController::class, 'login'])
+->name('IniciarSesion');
 
+Route::post('/RegistrarCliente',[UsuarioController::class, 'register_Client'])
+->name('RegistarCliente');
 
 
 Route::group(['prefix' => 'pago_facil'], function () {
