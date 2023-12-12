@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
 
@@ -22,8 +23,13 @@ Route::get('/test', function () {
     return view('test');
 });
 
+
+
+
 Route::group(['prefix' => 'pago_facil'], function () {
     Route::get('/pagar/{usuario}/{pedido}/{nit}', [PagoFacilController::class, 'RecolectarDatos'])->name('pago_facil.pagar');
     Route::post('/estado/{pedido}', [PagoFacilController::class, 'ConsultarEstado'])->name('pago_facil.estado');
     Route::get('/callback/{pedido}', [PagoFacilController::class, 'urlCallback'])->name('pago_facil.callback');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
