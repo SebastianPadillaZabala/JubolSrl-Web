@@ -77,11 +77,10 @@
                        
                             <li class="dropdown">
                                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                        data-feather="briefcase"></i><span>Empresa</span></a>
+                                        data-feather="tag"></i><span>Productos</span></a>
                                 <ul class="dropdown-menu">
 
-                                    <li><a class="nav-link" href="#">Lista de Empresas</a></li>
-                                    <li><a class="nav-link" href="#">Sucursales</a></li>
+                                    <li><a class="nav-link" href="{{route('productos.index')}}">Lista de Productos</a></li>
 
                                 </ul>
                             </li>

@@ -3,7 +3,9 @@
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Producto;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,4 @@ Route::group(['prefix' => 'pago_facil'], function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::resource('productos', ProductoController::class); 

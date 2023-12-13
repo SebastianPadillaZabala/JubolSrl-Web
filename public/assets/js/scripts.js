@@ -1,8 +1,8 @@
 "use strict";
 
-var themeType = "dark"; // light or dark
-var sidebarColor = "dark-sidebar"; // light-sidebar or dark-sidebar
-var themeColor = "theme-black"; // theme-black",theme-white",theme-purple,theme-blue,theme-cyan,theme-green,theme-orange
+var themeType = "light"; // light or dark
+var sidebarColor = "light-sidebar"; // light-sidebar or dark-sidebar
+var themeColor = "theme-white"; // theme-black",theme-white",theme-purple,theme-blue,theme-cyan,theme-green,theme-orange
 
 $(window).on("load", function () {
   $(".loader").fadeOut("slow");
