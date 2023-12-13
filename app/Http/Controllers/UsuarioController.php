@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Rol;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +14,11 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::select('usuarios.*', 'roles.nombre as rol')
+            ->join('roles', 'usuarios.rol_id', '=', 'roles.id')
+            ->get();
+
+        return view('usuarios.index', compact('usuarios'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -21,7 +26,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Rol::all();
+        return view('usuarios.create', compact('roles'));
     }
 
     /**
@@ -29,7 +35,29 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            request()->validate([
+                'nombre' => 'required',
+                'email' => 'required',
+                'password' => 'required',
+                'direccion' => 'required',
+                'telefono' => 'required',
+                'rol' => 'required',
+            ]);
+
+            $user = new User();
+            $user->nombre = $request->nombre;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->input('password'));
+            $user->direccion = $request->direccion;
+            $user->telefono = $request->telefono;
+            $user->rol_id = $request->rol;
+            $user->save();
+
+            return redirect()->route('usuarios.index')->with('success', 'Usuario creado satisfactoriamente');
+        } catch (\Exception $e) {
+            return redirect()->route('usuarios.index')->with('error', 'Error al crear el usuario');
+        }
     }
 
     /**
@@ -37,7 +65,8 @@ class UsuarioController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $usuario = User::with('rol')->find($id);
+        return view('usuarios.show', compact('usuario'));
     }
 
     /**
@@ -45,7 +74,9 @@ class UsuarioController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $usuarios = User::with('rol')->find($id);
+        $roles = Rol::all();
+        return view('usuarios.edit', compact('usuarios', 'roles'));
     }
 
     /**
@@ -53,7 +84,19 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $usuario = User::find($id);
+            $usuario->nombre = $request->nombre;
+            $usuario->email = $request->email;
+            $usuario->direccion = $request->direccion;
+            $usuario->telefono = $request->telefono;
+            $usuario->rol_id = $request->rol;;
+            $usuario->save();
+            return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado satisfactoriamente');
+
+        } catch (\Exception $e) {
+            return redirect()->route('usuarios.index')->with('error', 'Error al actualizar el usuario');
+        }
     }
 
     /**
@@ -61,7 +104,8 @@ class UsuarioController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado satisfactoriamente');
     }
 
     public function login(Request $request)
@@ -97,7 +141,7 @@ class UsuarioController extends Controller
         }
     }
 
-    public function register_Client(Request $request) 
+    public function register_Client(Request $request)
     {
         $cliente = new User();
         $cliente->nombre = $request->input('nombre');
