@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\PersonalMiddleware;
+
 use App\Models\Producto;
 
 /*
@@ -26,11 +29,11 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::post('/IniciarSesion',[UsuarioController::class, 'login'])
-->name('IniciarSesion');
+Route::post('/IniciarSesion', [UsuarioController::class, 'login'])
+    ->name('IniciarSesion');
 
-Route::post('/RegistrarCliente',[UsuarioController::class, 'register_Client'])
-->name('RegistarCliente');
+Route::post('/RegistrarCliente', [UsuarioController::class, 'register_Client'])
+    ->name('RegistarCliente');
 
 
 Route::group(['prefix' => 'pago_facil'], function () {
@@ -39,5 +42,13 @@ Route::group(['prefix' => 'pago_facil'], function () {
     Route::get('/callback/{pedido}', [PagoFacilController::class, 'urlCallback'])->name('pago_facil.callback');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('usuarios', UsuarioController::class);
+});
+
+Route::middleware(['auth', 'admin-personal'])->group(function () {
+    Route::resource('productos', ProductoController::class);
+});
+
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('productos', ProductoController::class); 

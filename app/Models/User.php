@@ -41,6 +41,11 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class, 'rol_id');
+    }
+
     /**
      * The attributes that should be cast.
      *
