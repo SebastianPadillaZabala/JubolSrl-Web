@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -99,7 +101,6 @@ class ProductoController extends Controller
             }
             $productos->save();
             return redirect()->route('productos.index')->with('success', 'Producto actualizado satisfactoriamente');
-
         } catch (\Exception $e) {
             return redirect()->route('productos.index')->with('error', 'Error al actualizar el producto');
         }
@@ -112,5 +113,104 @@ class ProductoController extends Controller
     {
         Producto::find($id)->delete();
         return redirect()->route('productos.index')->with('success', 'Producto eliminado satisfactoriamente');
+    }
+
+
+
+
+    public function productEcommerce()
+    {
+        $fechaActual = Carbon::now()->format('Y-m-d');
+
+        $allProducts = DB::select("
+        SELECT
+            p.id AS id,
+            p.nombre AS nombre,
+            p.descripcion AS descripcion,
+            p.imagen AS imagen,
+            p.stock AS stock,
+            p.precio AS precio,
+            CASE
+                WHEN pr.producto_id IS NOT NULL THEN pr.descuento
+                ELSE 0
+            END AS descuento,
+            CASE
+                WHEN pr.producto_id IS NOT NULL THEN ROUND(p.precio * (pr.descuento / 100), 2)
+                ELSE 0
+            END AS monto_dcto,
+            CASE
+                WHEN pr.producto_id IS NOT NULL THEN ROUND(p.precio * (1 - pr.descuento / 100), 2)
+                ELSE ROUND(p.precio, 2)
+            END AS precio_final
+        FROM productos p
+        LEFT JOIN (
+            SELECT producto_id, MAX(descuento) AS descuento
+            FROM promociones
+            WHERE fecha_inicio <= ? AND fecha_fin >= ?
+            GROUP BY producto_id
+        ) pr ON p.id = pr.producto_id
+        LIMIT 4
+    ", [$fechaActual, $fechaActual]);
+
+
+        $productsDeal = DB::select("
+            SELECT
+                p.id AS id,
+                p.nombre AS nombre,
+                p.descripcion AS descripcion,
+                p.imagen AS imagen,
+                p.stock AS stock,
+                p.precio AS precio,
+                ROUND(p.precio * (pr.descuento / 100), 2) AS monto_dcto,
+                ROUND(p.precio * (1 - pr.descuento / 100), 2) AS precio_final
+            FROM productos p
+            LEFT JOIN (
+                SELECT producto_id, MAX(descuento) AS descuento
+                FROM promociones
+                WHERE fecha_inicio <= ? AND fecha_fin >= ?
+                GROUP BY producto_id
+            ) pr ON p.id = pr.producto_id
+            WHERE pr.producto_id IS NOT NULL
+        ", [$fechaActual, $fechaActual]);
+
+        // return dd($resultados);
+        return view('ecommerce/home', ['allProducts' => $allProducts, 'productsDeal' => $productsDeal]);
+    }
+
+
+    public function allProductsEcommerce()
+    {
+        $fechaActual = Carbon::now()->format('Y-m-d');
+
+        $allProducts = DB::select("
+            SELECT
+                p.id AS id,
+                p.nombre AS nombre,
+                p.descripcion AS descripcion,
+                p.imagen AS imagen,
+                p.stock AS stock,
+                p.precio AS precio,
+                CASE
+                    WHEN pr.producto_id IS NOT NULL THEN pr.descuento
+                    ELSE 0
+                END AS descuento,
+                CASE
+                    WHEN pr.producto_id IS NOT NULL THEN ROUND(p.precio * (pr.descuento / 100), 2)
+                    ELSE 0
+                END AS monto_dcto,
+                CASE
+                    WHEN pr.producto_id IS NOT NULL THEN ROUND(p.precio * (1 - pr.descuento / 100), 2)
+                    ELSE ROUND(p.precio, 2)
+                END AS precio_final
+            FROM productos p
+            LEFT JOIN (
+                SELECT producto_id, MAX(descuento) AS descuento
+                FROM promociones
+                WHERE fecha_inicio <= ? AND fecha_fin >= ?
+                GROUP BY producto_id
+            ) pr ON p.id = pr.producto_id
+        ", [$fechaActual, $fechaActual]);
+
+        return view('ecommerce/all-products', ['allProducts' => $allProducts]);
     }
 }
