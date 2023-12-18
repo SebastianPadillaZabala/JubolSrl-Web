@@ -77,6 +77,14 @@
 
                             </ul>
                         </li>
+                        
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="percent"></i><span>Promociones</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('promociones.index')}}">Lista de Promociones</a></li>
+                            </ul>
+                        </li>
+                        
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="thumbs-up"></i><span>Publicidad</span></a>
                             <ul class="dropdown-menu">

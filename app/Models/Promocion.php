@@ -12,4 +12,9 @@ class Promocion extends Model
     protected $fillable = [
         'descripcion', 'descuento', 'fecha_inicio', 'fecha_fin', 'producto_id'
     ];
+
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'producto_id');
+    }
 }
