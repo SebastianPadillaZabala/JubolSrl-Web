@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
@@ -31,46 +32,49 @@ Route::get('/test', function () {
 });
 
 Route::post('/IniciarSesion', [UsuarioController::class, 'login'])
-->name('IniciarSesion');
+    ->name('IniciarSesion');
 
 Route::post('/RegistrarCliente', [UsuarioController::class, 'register_Client'])
     ->name('RegistarCliente');
-    
-    
-    Route::group(['prefix' => 'pago_facil'], function () {
-        Route::get('/pagar/{usuario}/{pedido}/{nit}', [PagoFacilController::class, 'RecolectarDatos'])->name('pago_facil.pagar');
-        Route::post('/estado/{pedido}', [PagoFacilController::class, 'ConsultarEstado'])->name('pago_facil.estado');
-        Route::get('/callback/{pedido}', [PagoFacilController::class, 'urlCallback'])->name('pago_facil.callback');
-    });
-    
-    Route::middleware(['auth', 'admin'])->group(function () {
-        Route::resource('usuarios', UsuarioController::class);
-    });
-    
-    Route::middleware(['auth', 'admin-personal'])->group(function () {
-        Route::resource('productos', ProductoController::class);
-    });
-    
-    
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
 
-    Route::get('/about-us', function () {
+
+Route::group(['prefix' => 'pago_facil'], function () {
+    Route::get('/pagar/{usuario}/{pedido}/{nit}', [PagoFacilController::class, 'RecolectarDatos'])->name('pago_facil.pagar');
+    Route::post('/estado/{pedido}', [PagoFacilController::class, 'ConsultarEstado'])->name('pago_facil.estado');
+    Route::get('/callback/{pedido}', [PagoFacilController::class, 'urlCallback'])->name('pago_facil.callback');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('usuarios', UsuarioController::class);
+});
+
+Route::middleware(['auth', 'admin-personal'])->group(function () {
+    Route::resource('productos', ProductoController::class);
+});
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+Route::get('/about-us', function () {
     return view('ecommerce/about-us');
-    })->name('about-us');
+})->name('about-us');
 
-    Route::get('/contact-us', function () {
+Route::get('/contact-us', function () {
     return view('ecommerce/contact-us');
-    })->name('contact-us');
+})->name('contact-us');
 
-    Route::get('/cart', function () {
-        return view('ecommerce/cart');
-    })->name('cart');
+Route::get('/cart', [CarritoController::class, 'cart'])
+    ->name('cart');
+
+Route::post('/realizarPedido', [CarritoController::class, 'realizarPedido'])
+    ->name('realizarPedido');
 
 
-    Route::get('/', [ProductoController::class, 'productEcommerce'])
+Route::get('/', [ProductoController::class, 'productEcommerce'])
     ->name('home');
-
-
-    Route::get('/shopEcommerce', [ProductoController::class, 'allProductsEcommerce'])
+Route::get('/shopEcommerce', [ProductoController::class, 'allProductsEcommerce'])
     ->name('shopEcommerce');
+
+
+
