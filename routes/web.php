@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Middleware\AdminMiddleware;
-use App\Http\Middleware\PersonalMiddleware;
 
 use App\Models\Producto;
 use App\Models\Promocion;
@@ -50,7 +50,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'admin-personal'])->group(function () {
     Route::resource('productos', ProductoController::class);
+    Route::resource('pagos', PagoController::class);
+    Route::resource('facturas', FacturaController::class);
 });
+
+Route::get('/facturasClient', [FacturaController::class, 'indexClient'])->name('indexFacturaClient');
+
+Route::get('/pagosClient', [PagoController::class, 'indexClient'])->name('indexPagoClient');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -77,4 +83,7 @@ Route::get('/shopEcommerce', [ProductoController::class, 'allProductsEcommerce']
     ->name('shopEcommerce');
 
 
-
+Route::post('/pagando/{id}', [PagoController::class, 'store'])
+    ->name('pagando');
+Route::get('/factura-view', [FacturaController::class, 'view'])
+    ->name('factura-view');

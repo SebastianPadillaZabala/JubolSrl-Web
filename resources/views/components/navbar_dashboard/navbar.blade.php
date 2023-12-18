@@ -83,8 +83,34 @@
                                 <li><a class="nav-link" href="#">Banners</a></li>
                             </ul>
                         </li>
-
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="dollar-sign"></i><span>Pagos</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('pagos.index')}}">Lista de Pagos</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Facturas</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('facturas.index')}}">Lista de Facturas</a></li>
+                            </ul>
+                        </li>
                         @endif
+                        @if(auth()->user()->rol_id == 3)
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="dollar-sign"></i><span>Pagos</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('indexPagoClient')}}">Lista de Pagos</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Facturas</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('indexFacturaClient')}}">Lista de Facturas</a></li>
+                            </ul>
+                        </li>
+                        @endif
+                        
                     </ul>
                 </aside>
             </div>
