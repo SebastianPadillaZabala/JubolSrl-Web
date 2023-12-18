@@ -5,11 +5,11 @@
     <div class="breadcrumbs-area position-relative">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="text-center col-12">
                     <div class="breadcrumb-content position-relative section-content">
                         <h3 class="title-3">Todos los productos</h3>
                         <ul>
-                            <li><a href="{{route('home')}}">Inicio</a></li>
+                            <li><a href="{{ route('home') }}">Inicio</a></li>
                             <li>Shop</li>
                         </ul>
                     </div>
@@ -41,7 +41,7 @@
                     @foreach ($allProducts as $product)
                         <div class="col-md-6 col-sm-6 col-lg-4 col-custom product-area">
                             <div class="product-item">
-                                <div class="single-product position-relative mr-0 ml-0">
+                                <div class="ml-0 mr-0 single-product position-relative">
                                     <div class="product-image">
 
                                         <img src="{{ asset('/assets/img/productos') . '/' . $product->imagen }}"
@@ -64,7 +64,13 @@
                                                 <span class="old-price"><del>{{ $product->precio }}</del></span>
                                             @endif
                                         </div>
-                                        <a href="cart.html" class="btn product-cart">Añadir al carrito</a>
+                                        <a href="javascript:void(0);" class="btn product-cart" data-id="{{ $product->id }}"
+                                            data-name="{{ $product->nombre }}" data-price="{{ $product->precio }}"
+                                            data-finalprice="{{ $product->precio_final }}"
+                                            data-image="{{ asset('/assets/img/productos/' . $product->imagen) }}"
+                                            data-promocion="{{ $product->descuento > 0 ? 'si' : 'no' }}">
+                                            Añadir al carrito
+                                        </a>
                                     </div>
                                     <div class="product-content-listview">
                                         <div class="product-title">
@@ -78,11 +84,13 @@
                                             @endif
                                         </div>
                                         <p class="desc-content">{{ $product->descripcion }}</p>
-                                        <div class="button-listview">
-                                            <a href="cart.html" class="btn product-cart button-icon flosun-button dark-btn"
-                                                data-toggle="tooltip" data-placement="top" title="Añadir al carrito">
-                                                <span>Añadir al carrito</span> </a>
-                                        </div>
+                                        <a href="javascript:void(0);" class="btn product-cart"
+                                            data-id="{{ $product->id }}" data-name="{{ $product->nombre }}"
+                                            data-price="{{ $product->precio }}" data-finalprice="{{ $product->precio_final }}"
+                                            data-image="{{ asset('/assets/img/productos/' . $product->imagen) }}"
+                                            data-promocion="{{ $product->descuento > 0 ? 'si' : 'no' }}">
+                                            Añadir al carrito
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +98,6 @@
                     @endforeach
                 </div>
                 <!-- Shop Wrapper End -->
-
             </div>
         </div>
     </div>

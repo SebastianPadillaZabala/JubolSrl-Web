@@ -51,9 +51,9 @@
                                 <li class="minicart-wrap">
                                     <a href="#" class="minicart-btn toolbar-btn">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span class="cart-item_count">3</span>
+                                        <span class="cart-item_count" id="cart-item-count">0</span>
                                     </a>
-                                    <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
+                                    <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2" id="cart-items">
                                         <div class="single-cart-item">
                                             <div class="cart-img">
                                                 <a href="cart.html"><img src="assets_ecommerce/images/cart/1.jpg"
@@ -70,54 +70,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="single-cart-item">
-                                            <div class="cart-img">
-                                                <a href="cart.html"><img src="assets_ecommerce/images/cart/2.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="cart-text">
-                                                <h5 class="title"><a href="cart.html">Integer eget augue</a></h5>
-                                                <div class="cart-text-btn">
-                                                    <div class="cart-qty">
-                                                        <span>1×</span>
-                                                        <span class="cart-price">$98.00</span>
-                                                    </div>
-                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single-cart-item">
-                                            <div class="cart-img">
-                                                <a href="cart.html"><img src="assets_ecommerce/images/cart/3.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="cart-text">
-                                                <h5 class="title"><a href="cart.html">Eleifend quam</a></h5>
-                                                <div class="cart-text-btn">
-                                                    <div class="cart-qty">
-                                                        <span>1×</span>
-                                                        <span class="cart-price">$98.00</span>
-                                                    </div>
-                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-price-total d-flex justify-content-between">
-                                            <h5>Total :</h5>
-                                            <h5>$166.00</h5>
-                                        </div>
-                                        <div class="cart-links d-flex justify-content-between">
-                                            <a class="btn product-cart button-icon flosun-button dark-btn"
-                                                href="{{ route('cart') }}">Ver carrito</a>
-                                            <a class="btn flosun-button secondary-btn rounded-0"
-                                                href="checkout.html">Procesar</a>
-                                        </div>
                                     </div>
                                 </li>
-
-
-
-
                                 <li class="minicart-wrap">
                                     <a href="#">
                                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -162,8 +116,7 @@
                             <ul class="mobile-menu">
                                 <li class="menu-item-has-children"><a href="{{ route('home') }}">Inicio</a>
                                 </li>
-                                <li class="menu-item-has-children"><a
-                                        href="{{ route('shopEcommerce') }}">Productos</a>
+                                <li class="menu-item-has-children"><a href="{{ route('shopEcommerce') }}">Productos</a>
                                 </li>
                                 <li><a href="{{ route('cart') }}">Carrito</a></a></li>
                                 <li><a href="{{ route('about-us') }}">Sobre nosotros</a></a></li>
