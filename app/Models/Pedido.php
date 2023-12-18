@@ -12,5 +12,10 @@ class Pedido extends Model
     protected $fillable = [
         'fecha', 'estado', 'monto_total', 'usuario_id'
     ];
+
+    public function facturas()
+    {
+        return $this->hasMany(Factura::class, 'pedido_id');
+    }
     
 }

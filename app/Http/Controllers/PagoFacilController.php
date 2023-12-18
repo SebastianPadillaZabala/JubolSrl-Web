@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido;
 use App\Models\PedidoDetalle;
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Js;
 
 class PagoFacilController extends Controller
 {
-    public function RecolectarDatos(Request $request, Usuario $usuario, Pedido $pedido, $nit)
+    public function RecolectarDatos(Request $request, User $usuario, Pedido $pedido, $nit)
     {
         try {
             $detalle = PedidoDetalle::where('pedido_id', $pedido->id)->get();
@@ -34,7 +34,7 @@ class PagoFacilController extends Controller
             $lnCiNit               = $nit;
             $lcNroPago             = "grupo14sa-" . rand(100000, 999999);
             $lnMontoClienteEmpresa = $pedido->monto_total;
-            $lcCorreo              = $usuario->correo;
+            $lcCorreo              = $usuario->email;
             $lcUrlCallBack         = "https://tecno-web14-e5add45ded4b.herokuapp.com/pago_facil/callback/" . $pedido->id;
             $lcUrlReturn           = "https://tecno-web14-e5add45ded4b.herokuapp.com/pago_facil/callback/" . $pedido->id;
             $laPedidoDetalle       = Json_encode($taPedidoDetalle);
