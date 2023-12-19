@@ -82,6 +82,11 @@
                                                     <td>{{ $p->monto }}</td>
                                                     <td>{{ $p->pedido_id }}</td>
                                                     <td>
+                                                        @if(auth()->user()->rol_id == 3)
+                                                        <a class="btn btn-sm btn-warning "
+                                                            href="{{ route('showClient', $p->id) }}"><i
+                                                                class="fa fa-fw fa-eye"></i> Ver</a>
+                                                        @else
                                                         <a class="btn btn-sm btn-warning "
                                                             href="{{ route('pagos.show', $p->id) }}"><i
                                                                 class="fa fa-fw fa-eye"></i> Ver</a>
@@ -93,6 +98,7 @@
                                                                 onclick="return confirm('¿Estas seguro de eliminar este registro?')"><i
                                                                     class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

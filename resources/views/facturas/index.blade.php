@@ -82,9 +82,15 @@
                                                     <td>{{ $f->fecha }}</td>
                                                     <td>{{ $f->pedido_id }}</td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-warning "
+                                                    @if(auth()->user()->rol_id == 3)
+                                                         <a class="btn btn-sm btn-warning "
+                                                            href="{{ route('showClientFactura', $f->id) }}"><i
+                                                                class="fa fa-fw fa-eye"></i> Ver</a>
+                                                        @else
+                                                         <a class="btn btn-sm btn-warning "
                                                             href="{{ route('facturas.show', $f->id) }}"><i
                                                                 class="fa fa-fw fa-eye"></i> Ver</a>
+                                                        
                                                         <form action="{{ route('facturas.destroy', $f->id) }}"
                                                             method="POST" style="display: inline-block">
                                                             @csrf
@@ -93,6 +99,7 @@
                                                                 onclick="return confirm('¿Estas seguro de eliminar este registro?')"><i
                                                                     class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

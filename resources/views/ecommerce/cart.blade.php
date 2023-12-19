@@ -44,9 +44,9 @@
                                             <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
                                                         src="{{ $item['image'] }}" alt="Product" /></a></td>
                                             <td class="pro-title"><a href="#">{{ $item['name'] }}</a></td>
-                                            <td class="pro-price"><span>Bs. {{ $item['price'] }}</span></td>
+                                            <td class="pro-price"><span>Bs. {{ $item['finalPrice'] }}</span></td>
                                             <td class="pro-quantity">{{ $item['quantity'] }}</td>
-                                            <td class="pro-subtotal">Bs. {{ $item['price'] * $item['quantity'] }}</td>
+                                            <td class="pro-subtotal">Bs. {{ $item['finalPrice'] * $item['quantity'] }}</td>
                                             {{-- <td class="pro-remove"><a href="javascript:void(0);"
                                                 onclick="removeItemFromCart({{ $item['id'] }})"><i
                                                     class="lnr lnr-trash"></i></a></td> --}}

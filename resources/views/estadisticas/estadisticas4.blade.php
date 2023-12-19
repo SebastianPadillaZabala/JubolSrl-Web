@@ -43,7 +43,7 @@
         @endif
         <section class="section">
             <div class="section-body">
-                <h4>Productos más vendidos en un periodo especifico</h4>
+                <h4>Monto vendido diariamente de un producto en un rango de fechas</h4>
 
 
                 <form id="formulario">

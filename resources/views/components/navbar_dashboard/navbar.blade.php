@@ -54,7 +54,7 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="{{ route('dashboard') }}"> <img alt="image"
+                        <a href="{{ route('home') }}"> <img alt="image"
                                 src="{{ asset('assets/img/logojugosplantilla.png') }}" class="header-logo" />
                             <span class="logo-name">JUBOL</span>
                         </a>
