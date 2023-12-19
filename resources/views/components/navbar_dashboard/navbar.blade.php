@@ -95,6 +95,16 @@
                         </li>
                         
                         <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bar-chart-2"></i><span>Estadisticas</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('estadisticas1')}}">Estadisticas 1</a></li>
+                                <li><a class="nav-link" href="{{route('estadisticas2')}}">Estadisticas 2</a></li>
+                                <li><a class="nav-link" href="{{route('estadisticas3')}}">Estadisticas 3</a></li>
+                                <li><a class="nav-link" href="{{route('estadisticas4')}}">Estadisticas 4</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="thumbs-up"></i><span>Publicidad</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="#">Banners</a></li>

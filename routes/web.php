@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
@@ -82,6 +83,7 @@ Route::post('/realizarPedido', [CarritoController::class, 'realizarPedido'])
 
 Route::get('/', [ProductoController::class, 'productEcommerce'])
     ->name('home');
+
 Route::get('/shopEcommerce', [ProductoController::class, 'allProductsEcommerce'])
     ->name('shopEcommerce');
 
@@ -95,3 +97,35 @@ Route::get('/factura-view', [FacturaController::class, 'view'])
 Route::middleware(['auth', 'admin-personal'])->group(function () {
     Route::resource('promociones', PromocionController::class);
 });
+
+
+
+Route::get('/estProd', [EstadisticasController::class, 'estProd']);
+
+Route::get('/estadisticas1', function () {
+    return view('estadisticas/estadisticas1');
+})->name('estadisticas1');
+
+Route::post('/estadisticas1', [EstadisticasController::class, 'estadisticas1'])
+    ->name('estadisticas1');
+
+Route::get('/estadisticas2', function () {
+    return view('estadisticas/estadisticas2');
+})->name('estadisticas2');
+
+Route::post('/estadisticas2', [EstadisticasController::class, 'estadisticas2'])
+    ->name('estadisticas2');
+
+Route::get('/estadisticas3', function () {
+   return view('estadisticas/estadisticas3');
+})->name('estadisticas3');
+
+Route::post('/estadisticas3', [EstadisticasController::class, 'estadisticas3'])
+    ->name('estadisticas3');
+
+Route::get('/estadisticas4', function () {
+    return view('estadisticas/estadisticas4');
+})->name('estadisticas4');
+
+Route::post('/estadisticas4', [EstadisticasController::class, 'estadisticas4'])
+    ->name('estadisticas4');
