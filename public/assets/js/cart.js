@@ -122,6 +122,6 @@ function verCarrito() {
     if (carrito) {
         let carritoEncoded = encodeURIComponent(carrito);
 
-        window.location.href = `/cart?cart=${carritoEncoded}`;
+        window.location.href = `/inf513/grupo14sa/JubolSrl-Web/public/cart?cart=${carritoEncoded}`;
     }
 }
