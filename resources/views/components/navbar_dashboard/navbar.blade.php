@@ -54,7 +54,7 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="{{ route('dashboard') }}"> <img alt="image"
+                        <a href="{{ route('home') }}"> <img alt="image"
                                 src="{{ asset('assets/img/logojugosplantilla.png') }}" class="header-logo" />
                             <span class="logo-name">JUBOL</span>
                         </a>
@@ -91,6 +91,16 @@
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="percent"></i><span>Promociones</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="{{route('promociones.index')}}">Lista de Promociones</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bar-chart-2"></i><span>Estadisticas</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('estadisticas1')}}">Estadisticas 1</a></li>
+                                <li><a class="nav-link" href="{{route('estadisticas2')}}">Estadisticas 2</a></li>
+                                <li><a class="nav-link" href="{{route('estadisticas3')}}">Estadisticas 3</a></li>
+                                <li><a class="nav-link" href="{{route('estadisticas4')}}">Estadisticas 4</a></li>
                             </ul>
                         </li>
                         

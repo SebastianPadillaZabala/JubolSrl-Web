@@ -33,7 +33,7 @@ class CarritoController extends Controller
         $subtotal = 0;
 
         foreach ($datosCarrito as $item) {
-            $subtotal += $item['price'] * $item['quantity'];
+            $subtotal += $item['finalPrice'] * $item['quantity'];
         }
 
         return view('ecommerce/cart', ['carrito' => $datosCarrito, 'subtotal' => $subtotal]);
@@ -109,7 +109,7 @@ class CarritoController extends Controller
         $carrito = json_decode($request->input('carrito'), true);
         $montoTotal = 0;
         foreach ($carrito as $item) {
-            $montoTotal += $item['price'] * $item['quantity'];
+            $montoTotal += $item['finalPrice'] * $item['quantity'];
         }
 
         DB::beginTransaction();
