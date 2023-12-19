@@ -67,6 +67,13 @@ class FacturaController extends Controller
         return view('facturas.show', compact('factura', 'productos'))->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
+    public function showClient(string $id)
+    {
+        $factura = Factura::find($id);
+        $productos = PedidoDetalle::where('pedido_id', $factura->pedido_id)->with('producto')->get();
+        return view('facturas.show', compact('factura', 'productos'))->with('i', (request()->input('page', 1) - 1) * 5);;
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

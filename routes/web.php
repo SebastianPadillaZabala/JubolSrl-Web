@@ -95,3 +95,9 @@ Route::get('/factura-view', [FacturaController::class, 'view'])
 Route::middleware(['auth', 'admin-personal'])->group(function () {
     Route::resource('promociones', PromocionController::class);
 });
+
+Route::get('/showPagoClient/{id}', [PagoController::class, 'showClient'])
+    ->name('showClient');
+
+Route::get('/showFacturaClient/{id}', [FacturaController::class, 'showClient'])
+    ->name('showClientFactura');

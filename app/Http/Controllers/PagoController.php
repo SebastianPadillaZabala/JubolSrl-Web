@@ -78,6 +78,12 @@ class PagoController extends Controller
         return view('pagos.show', compact('pago'));
     }
 
+    public function showClient(string $id)
+    {
+        $pago = Pago::find($id);
+        return view('pagos.show', compact('pago'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
