@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Log;
 
 class CarritoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('realizarPedido');
+    }
+
     public function cart(Request $request)
     {
         $carrito = $request->query('cart');
@@ -111,8 +116,8 @@ class CarritoController extends Controller
         try {
             $pedido = new Pedido();
             $pedido->fecha = Carbon::now();
-            $pedido->estado = '0'; 
-            $pedido->usuario_id = Auth::id(); 
+            $pedido->estado = '0';
+            $pedido->usuario_id = Auth::id();
             $pedido->monto_total = $montoTotal;
             $pedido->save();
 

@@ -1,9 +1,6 @@
 @extends('ecommerce/template')
 
 @section('content')
-
-
-
     <!-- Breadcrumb Area Start Here -->
     <div class="breadcrumbs-area position-relative">
         <div class="container">

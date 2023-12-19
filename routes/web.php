@@ -75,7 +75,9 @@ Route::get('/cart', [CarritoController::class, 'cart'])
     ->name('cart');
 
 Route::post('/realizarPedido', [CarritoController::class, 'realizarPedido'])
+    ->middleware('auth')
     ->name('realizarPedido');
+
 
 
 Route::get('/', [ProductoController::class, 'productEcommerce'])
@@ -93,4 +95,3 @@ Route::get('/factura-view', [FacturaController::class, 'view'])
 Route::middleware(['auth', 'admin-personal'])->group(function () {
     Route::resource('promociones', PromocionController::class);
 });
-

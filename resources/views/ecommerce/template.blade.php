@@ -29,13 +29,16 @@
     <link rel="stylesheet" href="assets_ecommerce/css/plugins/nice-select.min.css">
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="assets_ecommerce/css/plugins/magnific-popup.css">
-
+    
     <!-- Main Style CSS -->
-    <link rel="stylesheet" href="assets_ecommerce/css/style.css">
+    {{-- <link rel="stylesheet" href="assets_ecommerce/css/style.css"> --}}
+    <link rel="stylesheet" href="assets_ecommerce/css/style.css" id="theme-style">
 
     <script src="assets/js/cart.js"></script>
 
     @include('ecommerce/navbar')
+
+
 
 </head>
 
@@ -43,12 +46,9 @@
 
     @yield('content')
 
-
     @include('ecommerce/footer')
 
     @include('ecommerce/product-modal')
-
-
 
     <!-- Scroll to Top Start -->
     <a class="scroll-to-top" href="#">
@@ -59,33 +59,10 @@
     <!-- JS
     ============================================ -->
 
-
     <!-- Incluir Toastr CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <!-- Incluir Toastr JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <script>
-        // Configuración de Toastr
-        toastr.options = {
-            closeButton: true,
-            debug: false,
-            newestOnTop: true,
-            progressBar: true,
-            positionClass: "toast-top-right",
-            preventDuplicates: true,
-            onclick: null,
-            showDuration: "300",
-            hideDuration: "1000",
-            timeOut: "5000",
-            extendedTimeOut: "1000",
-            showEasing: "swing",
-            hideEasing: "linear",
-            showMethod: "fadeIn",
-            hideMethod: "fadeOut"
-        };
-    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- jQuery JS -->
     <script src="assets_ecommerce/js/vendor/jquery-3.6.0.min.js"></script>
