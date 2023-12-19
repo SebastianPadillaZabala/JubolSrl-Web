@@ -7,6 +7,7 @@ use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\UsuarioController;
 
 use App\Models\Producto;
@@ -87,3 +88,9 @@ Route::post('/pagando/{id}', [PagoController::class, 'store'])
     ->name('pagando');
 Route::get('/factura-view', [FacturaController::class, 'view'])
     ->name('factura-view');
+
+    
+Route::middleware(['auth', 'admin-personal'])->group(function () {
+    Route::resource('promociones', PromocionController::class);
+});
+
