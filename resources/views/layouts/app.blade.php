@@ -119,8 +119,10 @@
     <!-- JS Libraies -->
     <script src="{{ asset('assets/bundles/morris/morris.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/morris/raphael-min.js') }}"></script>
+    
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/chart-morris.js') }}"></script>
+    
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/index.js') }}"></script>
     <script src="{{ asset('assets/js/page/advance-table.js') }}"></script>
