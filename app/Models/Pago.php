@@ -12,4 +12,9 @@ class Pago extends Model
     protected $fillable = [
         'monto', 'fecha', 'metodo_pago', 'pedido_id'
     ];
+
+    public function pedido()
+    {
+        return $this->belongsTo(Pedido::class, 'pedido_id');
+    }
 }

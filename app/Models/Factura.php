@@ -12,4 +12,9 @@ class Factura extends Model
     protected $fillable = [
         'nit', 'nombre_cliente', 'monto', 'fecha', 'pedido_id'
     ];
+
+    public function pedido()
+    {
+        return $this->belongsTo(Pedido::class, 'pedido_id');
+    }
 }
