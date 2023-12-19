@@ -141,7 +141,7 @@
 
         $(document).ready(function() {
             $.ajax({
-                url: '/estadisticas4',
+                url: '/inf513/grupo14sa/JubolSrl-Web/public/estadisticas4',
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -171,7 +171,7 @@
 
 
                         $.ajax({
-                            url: '/estProd',
+                            url: '/inf513/grupo14sa/JubolSrl-Web/public/estProd',
                             method: 'GET',
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -229,7 +229,7 @@
 
                 limpiarArreglos();
                 $.ajax({
-                    url: '/estadisticas4',
+                    url: '/inf513/grupo14sa/JubolSrl-Web/public/estadisticas4',
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
