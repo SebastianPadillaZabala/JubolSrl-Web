@@ -67,6 +67,6 @@ class DashboardController extends Controller
             ->groupBy('pedidos.id', 'pagos.metodo_pago')
             ->get();
 
-        return view('dashboard', compact('usuarios', 'productos', 'promociones', 'pedidos', 'pedidosCliente', 'productosCliente', 'pagos', 'compraPromocion', 'pedidosUsuario'));
+            return view('dashboard', compact('usuarios', 'productos', 'promociones', 'pedidos', 'pedidosCliente', 'productosCliente', 'pagos', 'compraPromocion', 'pedidosUsuario'));
     }
 }
