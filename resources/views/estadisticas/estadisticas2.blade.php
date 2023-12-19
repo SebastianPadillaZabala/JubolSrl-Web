@@ -114,7 +114,7 @@
 
         $(document).ready(function() {
             $.ajax({
-                url: '/estadisticas2',
+                url: '/inf513/grupo14sa/JubolSrl-Web/public/estadisticas2',
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -157,7 +157,7 @@
 
                 limpiarArreglos();
                 $.ajax({
-                    url: '/estadisticas2',
+                    url: '/inf513/grupo14sa/JubolSrl-Web/public/estadisticas2',
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
