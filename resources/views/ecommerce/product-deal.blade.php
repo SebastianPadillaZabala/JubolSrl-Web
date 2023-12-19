@@ -4,7 +4,7 @@
         <div class="row">
             <!--Section Title Start-->
             <div class="col-12 col-custom">
-                <div class="section-title text-center mb-30">
+                <div class="text-center section-title mb-30">
                     <h3 class="section-title-3">Productos en descuento</h3>
                 </div>
             </div>
@@ -32,7 +32,14 @@
                                             <span class="regular-price ">{{ $productDeal->precio_final }}</span>
                                             <span class="old-price"><del>{{ $productDeal->precio }}</del></span>
                                         </div>
-                                        <a href="{{ route('cart') }}" class="btn product-cart">Añadir al carrito</a>
+                                        <a href="javascript:void(0);" class="btn product-cart"
+                                            data-id="{{ $productDeal->id }}" data-name="{{ $productDeal->nombre }}"
+                                            data-price="{{ $productDeal->precio }}"
+                                            data-finalprice="{{ $productDeal->precio_final }}"
+                                            data-image="{{ asset('/assets/img/productos/' . $productDeal->imagen) }}"
+                                            data-promocion="si">
+                                            Añadir al carrito
+                                        </a>
                                     </div>
                                 </div>
                                 <!--Single Product End-->

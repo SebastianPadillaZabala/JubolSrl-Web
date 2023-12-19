@@ -68,13 +68,12 @@ Route::get('/cart', [CarritoController::class, 'cart'])
     ->name('cart');
 
 Route::post('/realizarPedido', [CarritoController::class, 'realizarPedido'])
+    ->middleware('auth')
     ->name('realizarPedido');
+
 
 
 Route::get('/', [ProductoController::class, 'productEcommerce'])
     ->name('home');
 Route::get('/shopEcommerce', [ProductoController::class, 'allProductsEcommerce'])
     ->name('shopEcommerce');
-
-
-

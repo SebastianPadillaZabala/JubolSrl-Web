@@ -1,4 +1,4 @@
-<!-- Newsletter Area Start Here -->
+{{-- <!-- Newsletter Area Start Here -->
 <div class="news-letter-area gray-bg pt-no-text pb-no-text mt-text-3">
   <div class="container custom-area">
       <div class="row align-items-center">
@@ -30,4 +30,4 @@
       </div>
   </div>
 </div>
-<!-- Newsletter Area End Here -->
+<!-- Newsletter Area End Here --> --}}

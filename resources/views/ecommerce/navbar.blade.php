@@ -87,6 +87,13 @@
                                     </ul>
                                 </li>
 
+                                <li class="minicart-wrap">
+                                    <div class="dark-mode-switch">
+                                        <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
+                                        <label for="dark-mode-toggle" class="dark-mode-label"></label>
+                                    </div>
+                                </li>
+
 
                                 <li class="mobile-menu-btn d-lg-none">
                                     <a class="off-canvas-btn" href="#">
@@ -133,3 +140,85 @@
         <!-- off-canvas menu end -->
 
     </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeStyleLink = document.getElementById('theme-style');
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+            // Verifica si el modo oscuro está guardado en localStorage
+            darkModeToggle.checked = localStorage.getItem('dark-mode') === 'true';
+            if (darkModeToggle.checked) {
+                themeStyleLink.setAttribute('href', 'assets_ecommerce/css/style_dark.css');
+            }
+
+            darkModeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    themeStyleLink.setAttribute('href', 'assets_ecommerce/css/style_dark.css');
+                } else {
+                    themeStyleLink.setAttribute('href', 'assets_ecommerce/css/style.css');
+                }
+                // Guarda la preferencia del usuario en localStorage
+                localStorage.setItem('dark-mode', this.checked);
+            });
+        });
+    </script>
+    <style>
+        /* Estilo para el switch (interruptor de alternancia) */
+        .dark-mode-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            /* Ancho del switch */
+            height: 34px;
+            /* Altura del switch */
+        }
+
+        /* Oculta el checkbox */
+        .dark-mode-checkbox {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* Estilo para la palanca del switch */
+        .dark-mode-label {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            /* Color de fondo cuando está desactivado */
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .dark-mode-label:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        /* Cambia el color de fondo del switch cuando el checkbox está activado */
+        .dark-mode-checkbox:checked+.dark-mode-label {
+            background-color: #4CAF50;
+            /* Nuevo color de fondo para el modo oscuro */
+        }
+
+        /* Mueve la palanca del switch a la derecha cuando está activado */
+        .dark-mode-checkbox:checked+.dark-mode-label:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+    </style>
