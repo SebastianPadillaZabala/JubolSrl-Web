@@ -93,7 +93,6 @@ class UsuarioController extends Controller
             $usuario->rol_id = $request->rol;;
             $usuario->save();
             return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado satisfactoriamente');
-
         } catch (\Exception $e) {
             return redirect()->route('usuarios.index')->with('error', 'Error al actualizar el usuario');
         }
@@ -143,23 +142,27 @@ class UsuarioController extends Controller
 
     public function register_Client(Request $request)
     {
-        $cliente = new User();
-        $cliente->nombre = $request->input('nombre');
-        $cliente->telefono = $request->input('telefono');
-        $cliente->direccion = $request->input('direccion');
-        $cliente->rol_id = 3;
-        $cliente->email = $request->input('email');
-        $cliente->password = bcrypt($request->input('password'));
-        $cliente->save();
+        try {
+            $cliente = new User();
+            $cliente->nombre = $request->input('nombre');
+            $cliente->telefono = $request->input('telefono');
+            $cliente->direccion = $request->input('direccion');
+            $cliente->rol_id = 3;
+            $cliente->email = $request->input('email');
+            $cliente->password = bcrypt($request->input('password'));
+            $cliente->save();
 
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $credentials = array(
-            'email' => $email,
-            'password' => $password
-        );
-        $auth = Auth::attempt($credentials);
+            $email = $request->input('email');
+            $password = $request->input('password');
+            $credentials = array(
+                'email' => $email,
+                'password' => $password
+            );
+            $auth = Auth::attempt($credentials);
 
-        return redirect()->route('dashboard');
+            return redirect()->route('dashboard');
+        } catch (\Exception $e) {
+            return redirect()->route('register')->with('error', 'Error al actualizar el usuario');
+        }
     }
 }

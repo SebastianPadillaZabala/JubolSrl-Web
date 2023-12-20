@@ -27,28 +27,48 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="nombre" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre">
-                                        {!! $errors->first('nombre', '<span class="help-block text-danger">*:El campo nombre es requerido</span>') !!}
+                                        <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+">
+                                        @error('nombre')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email">
-                                        {!! $errors->first('email', '<span class="help-block text-danger">*:El campo email es requerido</span>') !!}
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
-                                        <input class="form-control" type="password" name="password">
-                                        {!! $errors->first('password', '<span class="help-block text-danger">*:El campo password es requerido</span>') !!}
+                                        <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" required>
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="direccion" class="form-label">Direccion</label>
-                                        <input type="text" class="form-control" id="direccion" name="direccion">
-                                        {!! $errors->first('direccion', '<span class="help-block text-danger">*:El campo direccion es requerido</span>') !!}
+                                        <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" name="direccion" required>
+                                        @error('direccion')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="telefono" class="form-label">Telefono</label>
-                                        <input type="text" class="form-control" id="telefono" name="telefono">
-                                        {!! $errors->first('telefono', '<span class="help-block text-danger">*:El campo telefono es requerido</span>') !!}
+                                        <input type="text" class="form-control @error('telefono') is-invalid @enderror" id="telefono" name="telefono" required>
+                                        @error('telefono')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="rol" class="form-label">Rol</label>

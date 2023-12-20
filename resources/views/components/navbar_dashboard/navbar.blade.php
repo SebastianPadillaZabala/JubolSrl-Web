@@ -26,7 +26,7 @@
                 </div>
                 <ul class="navbar-nav navbar-right">
 
-                    <li class="dropdown"><a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <span class="text-dark">{{ auth()->user()->nombre }}</span></a>
+                    <li class="dropdown"><a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <span class="text-dark">{{ auth()->user()->nombre }} - {{ auth()->user()->rol->nombre }} </span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
                             <div class="dropdown-title">Bienvenido {{ auth()->user()->nombre }}</div>
                             <a href="{{ route('profile.show') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> Perfil</a>
