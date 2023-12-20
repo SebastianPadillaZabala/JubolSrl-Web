@@ -279,7 +279,7 @@
         function search(query) {
             $.ajax({
                 method: 'GET',
-                url: '/search', // Ruta en Laravel para manejar la búsqueda
+                url: '/inf513/grupo14sa/JubolSrl-Web/public/search', // Ruta en Laravel para manejar la búsqueda
                 data: {
                     query: query
                 },
