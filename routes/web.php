@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PromocionController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UsuarioController;
 
 use App\Models\Producto;
@@ -134,3 +135,7 @@ Route::get('/estadisticas4', function () {
 
 Route::post('/estadisticas4', [EstadisticasController::class, 'estadisticas4'])
     ->name('estadisticas4');
+
+    Route::get('/search', [SearchController::class, 'search'])
+    ->name('search');
+
