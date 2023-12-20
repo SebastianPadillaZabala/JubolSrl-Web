@@ -4,6 +4,7 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagoFacilController;
@@ -138,4 +139,7 @@ Route::post('/estadisticas4', [EstadisticasController::class, 'estadisticas4'])
 
     Route::get('/search', [SearchController::class, 'search'])
     ->name('search');
+
+    Route::get('/page/{name}', [PaginaController::class, 'incrementCount']);
+    Route::get('/page-views', [PaginaController::class, 'getPageViews'])->name('getPageViews');
 
