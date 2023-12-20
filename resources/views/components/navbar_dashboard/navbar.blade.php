@@ -303,15 +303,15 @@
                     if (result.nombre !== undefined) {
                         var listItem;
                         if (result.tipo === 'usuario') {
-                            listItem = '<li><a href="/usuarios/' + result.id + '">' + result.nombre + '</a></li>';
+                            listItem = '<li><a href="/inf513/grupo14sa/JubolSrl-Web/public/usuarios/' + result.id + '">' + result.nombre + '</a></li>';
                         } else if (result.tipo === 'producto') {
-                            listItem = '<li><a href="/productos/' + result.id + '">' + result.nombre + '</a></li>';
+                            listItem = '<li><a href="/inf513/grupo14sa/JubolSrl-Web/public/productos/' + result.id + '">' + result.nombre + '</a></li>';
                         } 
                         $searchResults.append(listItem);
                     }
                     if (result.descripcion !== undefined) {
                         if (result.tipo === 'promocion') {
-                            listItem = '<li><a href="/promociones/' + result.id + '">' + result.descripcion + '</a></li>';
+                            listItem = '<li><a href="/inf513/grupo14sa/JubolSrl-Web/public/promociones/' + result.id + '">' + result.descripcion + '</a></li>';
                             $searchResults.append(listItem);
                         }
                     }
